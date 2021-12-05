@@ -3,10 +3,12 @@ package ro.robert.socialmediaspringboot.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ro.robert.socialmediaspringboot.service.Service;
 
 
 @org.springframework.stereotype.Controller
+@RequestMapping("/home")
 public class Controller {
     private final Service service;
 
@@ -15,7 +17,7 @@ public class Controller {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping()
     public String welcome() {
         return "Home";
     }
