@@ -18,4 +18,8 @@ public class Service {
     public List<User> getUsers() {
         return repository.findAll();
     }
+
+    public void saveUser(User user) {
+        repository.save(user);
+    }
 }
