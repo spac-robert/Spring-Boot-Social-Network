@@ -9,24 +9,26 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "name", length = 50)
-    private String name;
+    @Column(name = "first_name", length = 50)
+    private String first_name;
+    @Column(name = "last_name", length = 50)
+    private String last_name;
     @Column(name = "password", length = 30)
     private String password;
+    @Column(name = "email", length = 30)
+    private String email;
+    @Enumerated(EnumType.STRING)
+    private UserRole type;
 
-    public User(int id, String name, String password) {
-        this.id = id;
-        this.name = name;
+    public User(String first_name, String last_name, String password, String email) {
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.password = password;
-    }
-
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
+        this.email = email;
+        this.type = UserRole.USER;
     }
 
     public User() {
-
     }
 
     public int getId() {
@@ -37,12 +39,20 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getPassword() {
@@ -53,12 +63,31 @@ public class User {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public UserRole getType() {
+        return type;
+    }
+
+    public void setType(UserRole type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", type=" + type +
                 '}';
     }
 
@@ -67,11 +96,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(name, user.name) && Objects.equals(password, user.password);
+        return id == user.id && Objects.equals(first_name, user.first_name) && Objects.equals(last_name, user.last_name) && Objects.equals(password, user.password) && Objects.equals(email, user.email) && type == user.type;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, password);
+        return Objects.hash(id, first_name, last_name, password, email, type);
     }
 }

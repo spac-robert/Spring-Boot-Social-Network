@@ -13,9 +13,9 @@ public class UserConfiguration {
     @Bean
     CommandLineRunner commandLineRunner(UserRepository repository) {
         return args -> {
-            User calu = new User("calu", "XBelengherulx");
-            User daniel = new User("daniel", "Xbelengherulx");
-            User costel = new User("costel", "Xbelengherulx");
+            User calu = new User("Calu", "Martin", "castorul_stirb", "nenea_martin@gmail.com");
+            User daniel = new User("Ionut", "camatarul", "banigramada", "ionut@camataria.ro");
+            User costel = new User("Costi", "Fortza", "fortza_modiala", "costi_fortza@manea.com");
             repository.saveAll(List.of(calu, daniel, costel));
         };
     }

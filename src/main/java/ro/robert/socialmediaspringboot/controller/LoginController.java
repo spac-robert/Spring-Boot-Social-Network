@@ -11,6 +11,7 @@ import ro.robert.socialmediaspringboot.domain.User;
 import ro.robert.socialmediaspringboot.service.Service;
 
 @Controller
+
 public class LoginController {
     private final Service service;
 
