@@ -1,9 +1,11 @@
 package ro.robert.socialmediaspringboot.configuration;
 
-import ro.robert.socialmediaspringboot.domain.User;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import ro.robert.socialmediaspringboot.encoder.Encrypt;
+import ro.robert.socialmediaspringboot.entity.User;
 import ro.robert.socialmediaspringboot.repository.UserRepository;
 
 import java.util.List;
@@ -13,10 +15,11 @@ public class UserConfiguration {
     @Bean
     CommandLineRunner commandLineRunner(UserRepository repository) {
         return args -> {
-            User calu = new User("Calu", "Martin", "castorul_stirb", "nenea_martin@gmail.com");
-            User daniel = new User("Ionut", "camatarul", "banigramada", "ionut@camataria.ro");
-            User costel = new User("Costi", "Fortza", "fortza_modiala", "costi_fortza@manea.com");
-            repository.saveAll(List.of(calu, daniel, costel));
+            User calu = new User("nenea_martin@gmail.com", "Calu", "Martin", Encrypt.encrypt("castorul_stirb"));
+            User daniel = new User("ionut@camataria.ro", "Ionut", "camatarul", Encrypt.encrypt("banigramada"));
+            User costel = new User("costi_fortza@manea.com", "Costi", "Fortza", Encrypt.encrypt("fortza_modiala"));
+            User dan = new User("dan_barbasan@yahoo.com", "Dan", "Barbasan", Encrypt.encrypt("banigramada"));
+            repository.saveAll(List.of(calu, daniel, costel,dan));
         };
     }
 }

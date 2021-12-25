@@ -2,33 +2,43 @@ package ro.robert.socialmediaspringboot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import ro.robert.socialmediaspringboot.service.Service;
+import org.springframework.web.bind.annotation.*;
+import ro.robert.socialmediaspringboot.encoder.Encrypt;
+import ro.robert.socialmediaspringboot.entity.User;
+import ro.robert.socialmediaspringboot.service.UserService;
 
 
 @org.springframework.stereotype.Controller
 public class Controller {
-    private final Service service;
+    private final UserService userService;
 
     @Autowired
-    public Controller(Service service) {
-        this.service = service;
+    public Controller(UserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping("/")
-    public String welcome() {
-        return "Home";
+    @GetMapping("/login")
+    public String index() {
+        return "Login";
     }
 
-    @GetMapping("/users")
-    public String getUsers(Model model) {
-        model.addAttribute("users", service.getUsers());
-        return "Users";
-    }
+    @PostMapping("/login")
+    public String login(@ModelAttribute("loginForm") User user, Model m) {
+        String email = user.getEmail();
+        String pass = Encrypt.encrypt(user.getPassword());
+        System.out.println(email);
+        for (User user1 : userService.getAll()) {
+            System.out.println(user1);
+        }
+        User userFound = userService.findUserByEmail(email);
+        System.out.println(userFound);
+//        if (userFound != null && userFound.getPassword().equals(pass)) {
+//            return "Home";
+//        }
+        m.addAttribute("error", "Incorrect Username & Password");
+        return "Login";
 
-    @GetMapping("/server-home-page")
-    public String welcomeToServer() {
-        return "ServerHomePage";
     }
 
 }
+
