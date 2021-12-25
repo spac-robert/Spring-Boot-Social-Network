@@ -10,15 +10,18 @@
     <div class="wrapper">
         <div class="title"><span>Login Form</span></div>
         <form action="#" th:action="@{/login}" th:object="${account}" method="post">
-            <p th:if="${error}" class="error">UserName & Password Incorrect</p>
+            <p th:if="${error}" class="error">Email or Password Incorrect</p>
             <div class="row">
-                <input type="text" id="email" name="email"  th:value="*{email}">
+                <input type="text" id="email" name="email" th:value="*{email}">
             </div>
             <div class="row">
-                <input type="password" id="password" name="password"  th:value="*{password}">
+                <input type="password" id="password" name="password" th:value="*{password}">
             </div>
             <div class="row button">
-                <input type="submit" value="Login">
+                <input type="submit" name="login" value="Login">
+            </div>
+            <div class="row button">
+                <input type="submit" name="register" value="Register">
             </div>
         </form>
     </div>

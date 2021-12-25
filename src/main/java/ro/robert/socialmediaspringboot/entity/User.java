@@ -21,7 +21,7 @@ public class User {
     @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
     @Column(name = "last_name", nullable = false, length = 50)
-    private String lastNName;
+    private String lastName;
     @Column(name = "password", nullable = false, length = 150)
     private String password;
     @Enumerated(EnumType.STRING)
@@ -30,7 +30,7 @@ public class User {
     public User(String email, String firstName, String lastNName, String password) {
         this.email = email;
         this.firstName = firstName;
-        this.lastNName = lastNName;
+        this.lastName = lastNName;
         this.password = password;
         this.role = UserRole.USER;
     }
@@ -41,7 +41,7 @@ public class User {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", lastNName='" + lastNName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
                 '}';
