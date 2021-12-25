@@ -12,10 +12,11 @@
         <form action="#" th:action="@{/login}" th:object="${account}" method="post">
             <p th:if="${error}" class="error">Email or Password Incorrect</p>
             <div class="row">
-                <input type="text" id="email" name="email" th:value="*{email}">
+                <label for="email">Email</label><input type="text" id="email" name="email" th:value="*{email}">
             </div>
             <div class="row">
-                <input type="password" id="password" name="password" th:value="*{password}">
+                <label for="password">Password</label><input type="password" id="password" name="password"
+                                                             th:value="*{password}">
             </div>
             <div class="row button">
                 <input type="submit" name="login" value="Login">

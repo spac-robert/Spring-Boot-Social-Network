@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class UserValidator implements Validator<User> {
 
-    public boolean emailIsValid(String email) {
+    public void emailIsValid(String email) {
         String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         boolean isOk = Pattern.compile(regexPattern)
@@ -15,7 +15,6 @@ public class UserValidator implements Validator<User> {
         if (!isOk) {
             throw new ValidationException("Invalid email address");
         }
-        return true;
     }
 
     @Override
