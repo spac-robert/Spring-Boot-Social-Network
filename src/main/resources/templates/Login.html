@@ -4,20 +4,18 @@
     <meta charset="ISO-8859-1">
     <title>Login Form</title>
     <link th:href="@{/css/style.css}" rel="stylesheet">
-
 </head>
 <body>
 <div class="container">
     <div class="wrapper">
         <div class="title"><span>Login Form</span></div>
-        <form th:action="@{/login}" th:object="${loginForm}" method="post">
+        <form action="#" th:action="@{/login}" th:object="${account}" method="post">
             <p th:if="${error}" class="error">UserName & Password Incorrect</p>
             <div class="row">
-                <input th:type="text" th:text="*{email}">
+                <input type="text" id="email" name="email"  th:value="*{email}">
             </div>
             <div class="row">
-
-                <input th:type="password" th:text="*{password}">
+                <input type="password" id="password" name="password"  th:value="*{password}">
             </div>
             <div class="row button">
                 <input type="submit" value="Login">
@@ -25,6 +23,3 @@
         </form>
     </div>
 </div>
-
-</body>
-</html>

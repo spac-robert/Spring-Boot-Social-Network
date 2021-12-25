@@ -18,26 +18,23 @@ public class Controller {
     }
 
     @GetMapping("/login")
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("account", new User());
         return "Login";
     }
 
+
     @PostMapping("/login")
-    public String login(@ModelAttribute("loginForm") User user, Model m) {
+    public String login(@ModelAttribute("account") User user, Model m) {
         String email = user.getEmail();
         String pass = Encrypt.encrypt(user.getPassword());
         System.out.println(email);
-        for (User user1 : userService.getAll()) {
-            System.out.println(user1);
-        }
         User userFound = userService.findUserByEmail(email);
-        System.out.println(userFound);
-//        if (userFound != null && userFound.getPassword().equals(pass)) {
-//            return "Home";
-//        }
+        if (userFound != null && userFound.getPassword().equals(pass)) {
+            return "Home";
+        }
         m.addAttribute("error", "Incorrect Username & Password");
         return "Login";
-
     }
 
 }
