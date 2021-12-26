@@ -32,7 +32,7 @@ public class LoginController {
         System.out.println(email);
         User userFound = userService.findUserByEmail(email);
         if (userFound != null && userFound.getPassword().equals(pass)) {
-            return "Home";
+            return "redirect:/home";
         }
         m.addAttribute("error", "Incorrect Username or Password");
         return "Login";
