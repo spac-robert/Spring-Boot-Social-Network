@@ -25,22 +25,18 @@ public class LoginController {
         return "Login";
     }
 
-
     @RequestMapping(value = "/login", method = RequestMethod.POST, params = "login")
     public String login(@ModelAttribute("account") User user, Model m) {
-//        String email = user.getEmail();
-//        String pass = Encrypt.encrypt(user.getPassword());
-//        System.out.println(email);
-//        User userFound = userService.findUserByEmail(email);
-//        if (userFound != null && userFound.getPassword().equals(pass)) {
-//            Client client = new Client(userFound);
-//            return "redirect:/home";
-//        }
-//        m.addAttribute("error", "Incorrect Username or Password");
-//        return "Login";
-        User userFound = userService.findUserByEmail("dan_barbasan@yahoo.com");
-        Client client = new Client(userFound);
-        return "redirect:/home";
+        String email = user.getEmail();
+        String pass = Encrypt.encrypt(user.getPassword());
+        System.out.println(email);
+        User userFound = userService.findUserByEmail(email);
+        if (userFound != null && userFound.getPassword().equals(pass)) {
+            Client client = new Client(userFound);
+            return "redirect:/home";
+        }
+        m.addAttribute("error", "Incorrect Username or Password");
+        return "Login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, params = "register")

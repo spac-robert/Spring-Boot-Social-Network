@@ -6,6 +6,7 @@ import ro.robert.socialmediaspringboot.entity.User;
 import ro.robert.socialmediaspringboot.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -22,5 +23,14 @@ public class UserService {
 
     public List<User> getAll() {
         return userRepository.findAll();
+    }
+
+    public User findById(long id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.get();
+    }
+
+    public List<User> findByFirstName(String firstName) {
+        return userRepository.findByFirstName(firstName);
     }
 }

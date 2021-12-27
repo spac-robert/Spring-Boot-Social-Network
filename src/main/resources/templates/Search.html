@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Login Form</title>
+</head>
+<body>
+<table>
+    <tr th:each="user : ${users}">
+        <a class="active" th:href="@{/profile/{id}(id=${user.id})}" th:text="${user.fullName}">
+        </a>
+    </tr>
+</table>
+</body>
+</html>

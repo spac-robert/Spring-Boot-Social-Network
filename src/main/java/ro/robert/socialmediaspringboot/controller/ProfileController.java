@@ -24,4 +24,28 @@ public class ProfileController {
         model.addAttribute("client", Client.getClient());
         return "Profile";
     }
+
+    @RequestMapping(method = {RequestMethod.POST})
+    public String searchBar(@ModelAttribute("user") User user, Model model) {
+        model.addAttribute("users", userService.getAll());
+        return "Profile";
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String getUserById(Model model, @PathVariable String id) {
+        User user = userService.findById(Long.parseLong(id));
+        model.addAttribute("client", user);
+        return "Profile";
+    }
+
+
+//    @RequestMapping(value = "/{ID}",method = RequestMethod.GET)
+//    public String getUserProfile(Model ){
+//
+//    }
+//    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST})
+//    public String getProfileUser(Model model) {
+//        model.addAttribute("client", Client.getClient());
+//        return "Profile";
+//    }
 }

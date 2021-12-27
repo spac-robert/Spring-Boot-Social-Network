@@ -105,59 +105,59 @@
     </style>
 </head>
 <body>
-    <div class="topnav">
-        <a class="active" th:href="@{/home}">Home</a>
-        <div class="row button">
-            <a th:href="@{/profile}">Profile</a>
-        </div>
-        <div class="search-container">
-
-            <!--        sa dispara asta-->
-            <form th:action="@{/login}">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
+<div class="topnav">
+    <a class="active" th:href="@{/home}">Home</a>
+    <div class="row button">
+        <a th:href="@{/profile}">Profile</a>
     </div>
-        <link href="css/profile.css" rel="stylesheet">
-        <div class="container">
-            <div class="main-body">
-                <!-- /Breadcrumb -->
-                <div class="row gutters-sm">
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                         class="rounded-circle" width="150">
-                                    <div class="mt-3" th:object="${client}">
-                                        <h4 th:text="${client.getFullName()}">
-                                        </h4>
-                                        <button class="btn btn-primary">Follow</button>
-                                        <button class="btn btn-outline-primary">Message</button>
-                                    </div>
-                                </div>
+    <div class="search-container">
+        <form th:action="@{/search}" method="get">
+            <input type="text" placeholder="Search.." name="search">
+            <table>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.fullName}"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<link href="css/profile.css" rel="stylesheet">
+<div class="container">
+    <div class="main-body">
+        <!-- /Breadcrumb -->
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                 class="rounded-circle" width="150">
+                            <div class="mt-3" th:object="${client}">
+                                <h4 th:text="${client.getFullName()}">
+                                </h4>
+                                <button class="btn btn-primary">Follow</button>
+                                <button class="btn btn-outline-primary">Message</button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Full Name</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary" th:text="${client.getFullName()}">
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Email</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary" th:text="${client.email}">
-                                    </div>
-                                </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" th:text="${client.getFullName()}">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" th:text="${client.email}">
                             </div>
                         </div>
                     </div>
@@ -165,6 +165,8 @@
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 </body>
 </html>
