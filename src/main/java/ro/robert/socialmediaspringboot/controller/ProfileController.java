@@ -2,8 +2,10 @@ package ro.robert.socialmediaspringboot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import ro.robert.socialmediaspringboot.entity.Client;
+import ro.robert.socialmediaspringboot.entity.User;
 import ro.robert.socialmediaspringboot.service.UserService;
 
 @Controller
@@ -16,9 +18,10 @@ public class ProfileController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public String index() {
+
+    @RequestMapping(method = {RequestMethod.GET})
+    public String getProfile(Model model) {
+        model.addAttribute("client", Client.getClient());
         return "Profile";
     }
-
 }
