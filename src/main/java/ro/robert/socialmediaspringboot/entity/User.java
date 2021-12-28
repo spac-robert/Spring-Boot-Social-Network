@@ -3,7 +3,7 @@ package ro.robert.socialmediaspringboot.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.ui.Model;
+import ro.robert.socialmediaspringboot.entity.enumeration.UserRole;
 
 import javax.persistence.*;
 import java.util.List;

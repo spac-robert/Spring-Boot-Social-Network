@@ -101,5 +101,19 @@
         </form>
     </div>
 </div>
+<table>
+    <tr th:each="notification : ${notifications}">
+        <td th:text="${notification.getFriendRequest()}">
+        </td>
+        <td>
+            <a class="btn btn-primary" id="accept" th:href="@{/notification}">accept
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-primary" id="reject" th:href="@{/notification}">reject
+            </a>
+        </td>
+    </tr>
+</table>
 </body>
 </html>

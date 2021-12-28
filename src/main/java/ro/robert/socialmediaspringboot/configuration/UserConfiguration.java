@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ro.robert.socialmediaspringboot.encoder.Encrypt;
+import ro.robert.socialmediaspringboot.entity.FriendRequest;
 import ro.robert.socialmediaspringboot.entity.User;
 import ro.robert.socialmediaspringboot.repository.UserRepository;
 

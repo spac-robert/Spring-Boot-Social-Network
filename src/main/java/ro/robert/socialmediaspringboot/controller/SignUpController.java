@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ro.robert.socialmediaspringboot.encoder.Encrypt;
 import ro.robert.socialmediaspringboot.entity.User;
-import ro.robert.socialmediaspringboot.entity.UserRole;
+import ro.robert.socialmediaspringboot.entity.enumeration.UserRole;
 import ro.robert.socialmediaspringboot.repository.UserRepository;
 import ro.robert.socialmediaspringboot.validator.UserValidator;
 import ro.robert.socialmediaspringboot.validator.ValidationException;

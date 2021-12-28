@@ -6,25 +6,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ro.robert.socialmediaspringboot.entity.Client;
 import ro.robert.socialmediaspringboot.entity.FriendRequest;
-import ro.robert.socialmediaspringboot.entity.RequestType;
-import ro.robert.socialmediaspringboot.repository.FriendshipRepository;
-import ro.robert.socialmediaspringboot.repository.UserRepository;
+import ro.robert.socialmediaspringboot.entity.enumeration.RequestType;
+import ro.robert.socialmediaspringboot.service.ServiceController;
 
 @Controller
 @RequestMapping(value = "/request")
 public class RequestController {
-    private final UserRepository userRepository;
-    private final FriendshipRepository friendshipRepository;
+    private ServiceController service;
 
     @Autowired
-    public RequestController(UserRepository userRepository, FriendshipRepository friendshipRepository) {
-        this.userRepository = userRepository;
-        this.friendshipRepository = friendshipRepository;
+    public RequestController(ServiceController service) {
+        this.service = service;
     }
 
     @RequestMapping(value = "/{id}", method = {RequestMethod.GET})
     public String sendFriendRequest(Model model, @PathVariable String id) {
-        friendshipRepository.save(new FriendRequest(Client.getClient(), userRepository.getById(Long.valueOf(id)), RequestType.PENDING));
+       service.saveFriendship(Long.parseLong(id));
+
         return "redirect:/profile/" + id;
     }
 }
