@@ -3,8 +3,10 @@ package ro.robert.socialmediaspringboot.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.ui.Model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -26,6 +28,10 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "to")
+    private List<FriendRequest> friends;
+
 
     public User(String email, String firstName, String lastNName, String password) {
         this.email = email;

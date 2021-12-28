@@ -37,15 +37,4 @@ public class ProfileController {
         model.addAttribute("client", user);
         return "Profile";
     }
-
-
-//    @RequestMapping(value = "/{ID}",method = RequestMethod.GET)
-//    public String getUserProfile(Model ){
-//
-//    }
-//    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST})
-//    public String getProfileUser(Model model) {
-//        model.addAttribute("client", Client.getClient());
-//        return "Profile";
-//    }
 }

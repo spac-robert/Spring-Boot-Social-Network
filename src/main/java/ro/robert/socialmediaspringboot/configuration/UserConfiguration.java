@@ -19,7 +19,8 @@ public class UserConfiguration {
             User daniel = new User("ionut@camataria.ro", "Ionut", "camatarul", Encrypt.encrypt("banigramada"));
             User costel = new User("costi_fortza@manea.com", "Costi", "Fortza", Encrypt.encrypt("fortza_modiala"));
             User dan = new User("dan_barbasan@yahoo.com", "Dan", "Barbasan", Encrypt.encrypt("banigramada"));
-            repository.saveAll(List.of(calu, daniel, costel,dan));
+            User castravete = new User("castrav@yahoo.com", "Ionut", "Castravete", Encrypt.encrypt("banigramada"));
+            repository.saveAll(List.of(calu, daniel, costel, dan, castravete));
         };
     }
 }

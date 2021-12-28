@@ -115,11 +115,13 @@
     <a class="active" th:href="@{/home}">Home</a>
     <a th:href="@{/profile}">Profile</a>
     <div class="search-container">
-
-        <!--        sa dispara asta-->
-        <form th:action="@{/login}">
+        <form th:action="@{/search}" method="get">
             <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <table>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.fullName}"></td>
+                </tr>
+            </table>
         </form>
     </div>
 </div>
