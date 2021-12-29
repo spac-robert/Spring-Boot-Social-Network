@@ -4,25 +4,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ro.robert.socialmediaspringboot.entity.Client;
-import ro.robert.socialmediaspringboot.entity.FriendRequest;
-import ro.robert.socialmediaspringboot.entity.enumeration.RequestType;
 import ro.robert.socialmediaspringboot.service.ServiceController;
 
 @Controller
 @RequestMapping(value = "/request")
 public class RequestController {
-    private ServiceController service;
+    private final ServiceController service;
 
     @Autowired
     public RequestController(ServiceController service) {
         this.service = service;
     }
 
-    @RequestMapping(value = "/{id}", method = {RequestMethod.GET})
+    @RequestMapping(value = "/{id}", method = {RequestMethod.GET}, params = "send")
     public String sendFriendRequest(Model model, @PathVariable String id) {
-       service.saveFriendship(Long.parseLong(id));
+        service.saveFriendship(Long.parseLong(id));
+        return "redirect:/profile/" + id;
+    }
 
+    @RequestMapping(value = "/{id}", method = {RequestMethod.GET}, params = "cancel")
+    public String cancelFriendRequest(Model model, @PathVariable String id) {
+        service.saveFriendship(Long.parseLong(id));
         return "redirect:/profile/" + id;
     }
 }

@@ -102,5 +102,21 @@
         </form>
     </div>
 </div>
+
+<table>
+    <tr th:each="user : ${friendsList}">
+        <td th:text="${user.fullName}">
+        </td>
+        <td>
+            <form th:action="@{/friends/{id}(id=${user.id})}" method="POST">
+                <div class="row button">
+                    <input type="submit" name="unfriend" value="unfriend">
+                </div>
+            </form>
+        </td>
+    </tr>
+</table>
+
+
 </body>
 </html>

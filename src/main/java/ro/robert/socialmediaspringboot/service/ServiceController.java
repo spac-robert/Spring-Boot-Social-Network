@@ -46,4 +46,5 @@ public class ServiceController {
     public User getUserById(Long id) {
         return userService.findById(id);
     }
+
 }

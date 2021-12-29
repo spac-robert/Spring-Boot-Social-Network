@@ -62,4 +62,8 @@ public class User {
         this.friends.add(from);
         from.friends.add(this);
     }
+
+    public void deleteFriend(User userById) {
+        this.friends.remove(userById);
+    }
 }
