@@ -135,15 +135,8 @@
                             <div class="mt-3" th:object="${client}">
                                 <h4 th:text="${client.getFullName()}">
                                 </h4>
-                                <a class="btn btn-primary" id="send"
-                                   th:href="@{/request/{id}(id=${client.id})}">Send
-                                    friend request
+                                <a class="btn btn-primary" th:href="@{/request/{id}(id=${client.id})}">Follow
                                 </a>
-                                <a class="btn-secondary" id="cancel"
-                                   th:href="@{/request/{id}(id=${client.id})}">Cancel
-                                    friend request
-                                </a>
-
                                 <button class="btn btn-primary">Message</button>
                             </div>
                         </div>

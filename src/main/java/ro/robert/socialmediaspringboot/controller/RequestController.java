@@ -16,15 +16,15 @@ public class RequestController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/{id}", method = {RequestMethod.GET}, params = "send")
+    @RequestMapping(value = "/{id}", method = {RequestMethod.GET})
     public String sendFriendRequest(Model model, @PathVariable String id) {
         service.saveFriendship(Long.parseLong(id));
         return "redirect:/profile/" + id;
     }
 
-    @RequestMapping(value = "/{id}", method = {RequestMethod.GET}, params = "cancel")
-    public String cancelFriendRequest(Model model, @PathVariable String id) {
-        service.saveFriendship(Long.parseLong(id));
-        return "redirect:/profile/" + id;
-    }
+//    @RequestMapping(value = "/{id}", method = {RequestMethod.GET}, params = "cancel")
+//    public String cancelFriendRequest(Model model, @PathVariable String id) {
+//        service.saveFriendship(Long.parseLong(id));
+//        return "redirect:/profile/" + id;
+//    }
 }
