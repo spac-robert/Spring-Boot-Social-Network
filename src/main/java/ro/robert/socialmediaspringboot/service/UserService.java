@@ -35,4 +35,7 @@ public class UserService {
         return userRepository.findByFirstName(firstName);
     }
 
+    public User saveUser(User loggedUser) {
+        return userRepository.save(loggedUser);
+    }
 }

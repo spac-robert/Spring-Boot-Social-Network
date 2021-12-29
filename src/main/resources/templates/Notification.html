@@ -88,7 +88,7 @@
 
 <div class="topnav">
     <a class="active" th:href="@{/home}">Home</a>
-    <a th:href="@{/profile}">Profile</a>
+    <a th:href="@{/profile}" id="profile">Profile</a>
     <a th:href="@{/notifications}">Notification</a>
     <div class="search-container">
         <form th:action="@{/search}" method="get">
@@ -102,16 +102,22 @@
     </div>
 </div>
 <table>
-    <tr th:each="notification : ${notifications}">
+    <tr th:each="notification : ${list_notifications}">
         <td th:text="${notification.getFriendRequest()}">
         </td>
         <td>
-            <a class="btn btn-primary" id="accept" th:href="@{/notification}">accept
-            </a>
+            <form th:action="@{/notifications/{id}(id=${notification.getId()})}" method="POST">
+                <div class="row button">
+                    <input type="submit" name="accept" value="accept">
+                </div>
+            </form>
         </td>
         <td>
-            <a class="btn btn-primary" id="reject" th:href="@{/notification}">reject
-            </a>
+            <form th:action="@{/notifications/{id}(id=${notification.getId()})}" method="POST">
+                <div class="row button">
+                    <input type="submit" name="reject" value="reject">
+                </div>
+            </form>
         </td>
     </tr>
 </table>

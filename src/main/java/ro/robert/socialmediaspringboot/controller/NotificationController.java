@@ -1,15 +1,17 @@
 package ro.robert.socialmediaspringboot.controller;
 
+import org.apache.coyote.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import ro.robert.socialmediaspringboot.entity.Client;
+import ro.robert.socialmediaspringboot.entity.FriendRequest;
 import ro.robert.socialmediaspringboot.entity.User;
 import ro.robert.socialmediaspringboot.service.ServiceController;
 
+@Transactional
 @Controller
 @RequestMapping(value = "/notifications")
 public class NotificationController {
@@ -22,25 +24,31 @@ public class NotificationController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("notifications", serviceController.getAllRequests());
+        model.addAttribute("list_notifications", serviceController.getAllRequests());
         return "Notification";
     }
 
 
-    @RequestMapping(value = "", method = RequestMethod.POST, params = "profile")
+    @RequestMapping(method = RequestMethod.POST, params = "profile")
     public String profile() {
         return "redirect:/profile";
     }
 
-    //TODO de implementat aceste 2
-    @RequestMapping(value = "", method = RequestMethod.POST, params = "accept")
-    public void accept() {
-        System.out.println("ACCEPTED");
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST, params = "accept")
+    public String accept(@PathVariable String id) {
+        FriendRequest friendRequest = serviceController.getFriendRequest(Long.parseLong(id));
+        serviceController.deleteRequestByIdFrom(friendRequest.getFrom().getId());
+        User loggedUser = serviceController.getUserById(Client.getClient().getId());
+        loggedUser.addFriend(friendRequest.getFrom());
+        serviceController.saveUser(loggedUser);
+        return "redirect:/notifications";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST, params = "reject")
-    public void reject() {
-        System.out.println("Rejected");
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST, params = "reject")
+    public String reject(@PathVariable String id) {
+        FriendRequest friendRequest = serviceController.getFriendRequest(Long.parseLong(id));
+        serviceController.deleteRequestByIdFrom(friendRequest.getFrom().getId());
+        return "redirect:/notifications";
     }
 
     @RequestMapping(method = {RequestMethod.POST})

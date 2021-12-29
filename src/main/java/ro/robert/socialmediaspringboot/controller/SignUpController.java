@@ -32,7 +32,6 @@ public class SignUpController {
     @RequestMapping(value = "/register", method = RequestMethod.POST, params = "signup")
     public String signUp(@ModelAttribute("account") User user, Model m) {
         System.out.println(user);
-        //TODO validate email, password,lastname,firstname
         //TODO find how to display error msg
         try {
             userValidator.validate(user);

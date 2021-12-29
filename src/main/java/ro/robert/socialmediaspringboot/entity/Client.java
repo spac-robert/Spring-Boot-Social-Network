@@ -10,4 +10,8 @@ public class Client {
     public static User getClient() {
         return user;
     }
+
+    public static void setFriend(User from) {
+        user.addFriend(from);
+    }
 }

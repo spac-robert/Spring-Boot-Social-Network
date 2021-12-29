@@ -30,4 +30,20 @@ public class ServiceController {
         requestService.save(friendRequest);
     }
 
+    public void deleteRequestByIdFrom(long parseLong) {
+        requestService.deleteRequestByIdFrom(parseLong);
+    }
+
+    public FriendRequest getFriendRequest(long parseLong) {
+        return requestService.findById(parseLong);
+    }
+
+
+    public User saveUser(User loggedUser) {
+        return userService.saveUser(loggedUser);
+    }
+
+    public User getUserById(Long id) {
+        return userService.findById(id);
+    }
 }

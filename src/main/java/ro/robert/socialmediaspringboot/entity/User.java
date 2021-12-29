@@ -6,6 +6,7 @@ import lombok.Setter;
 import ro.robert.socialmediaspringboot.entity.enumeration.UserRole;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -14,7 +15,6 @@ import java.util.List;
 @Setter
 @Table(name = "users", schema = "public")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,10 +28,11 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole role;
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "to")
-    private List<FriendRequest> friends;
+    private List<FriendRequest> friendRequests;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<User> friends;
 
     public User(String email, String firstName, String lastNName, String password) {
         this.email = email;
@@ -55,5 +56,10 @@ public class User {
                 ", password='" + password + '\'' +
                 ", role=" + role +
                 '}';
+    }
+
+    public void addFriend(User from) {
+        this.friends.add(from);
+        from.friends.add(this);
     }
 }
