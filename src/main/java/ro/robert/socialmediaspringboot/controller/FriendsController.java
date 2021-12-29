@@ -47,7 +47,9 @@ public class FriendsController {
     @RequestMapping(value = "/{id}", method = RequestMethod.POST, params = "unfriend")
     public String deleteFriend(@PathVariable String id) {
         User user = serviceController.getUserById(Client.getClient().getId());
-        user.deleteFriend(serviceController.getUserById(Long.parseLong(id)));
+        User deleteUser = serviceController.getUserById(Long.parseLong(id));
+        user.deleteFriend(deleteUser);
+        serviceController.saveUser(user);
         return "redirect:/friends";
     }
 

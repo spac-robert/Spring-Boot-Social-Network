@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ro.robert.socialmediaspringboot.entity.Client;
+import ro.robert.socialmediaspringboot.entity.FriendRequest;
+import ro.robert.socialmediaspringboot.entity.enumeration.RequestType;
 import ro.robert.socialmediaspringboot.service.ServiceController;
 
 @Controller
@@ -19,12 +22,7 @@ public class RequestController {
     @RequestMapping(value = "/{id}", method = {RequestMethod.GET})
     public String sendFriendRequest(Model model, @PathVariable String id) {
         service.saveFriendship(Long.parseLong(id));
+
         return "redirect:/profile/" + id;
     }
-
-//    @RequestMapping(value = "/{id}", method = {RequestMethod.GET}, params = "cancel")
-//    public String cancelFriendRequest(Model model, @PathVariable String id) {
-//        service.saveFriendship(Long.parseLong(id));
-//        return "redirect:/profile/" + id;
-//    }
 }

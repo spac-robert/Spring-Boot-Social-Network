@@ -65,5 +65,6 @@ public class User {
 
     public void deleteFriend(User userById) {
         this.friends.remove(userById);
+        userById.friends.remove(this);
     }
 }
