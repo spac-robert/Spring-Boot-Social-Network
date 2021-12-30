@@ -138,6 +138,10 @@
                                 <a class="btn btn-primary" th:href="@{/request/{id}(id=${client.id})}">Follow
                                 </a>
                                 <button class="btn btn-primary">Message</button>
+                                <div th:object="request">
+                                    <a class="btn btn-primary" th:href="@{/request/{id}(id=${request.id})}">Cancel
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -166,8 +170,6 @@
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 </body>
 </html>

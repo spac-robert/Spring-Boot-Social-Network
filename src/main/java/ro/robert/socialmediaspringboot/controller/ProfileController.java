@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ro.robert.socialmediaspringboot.entity.Client;
+import ro.robert.socialmediaspringboot.entity.FriendRequest;
 import ro.robert.socialmediaspringboot.entity.User;
 import ro.robert.socialmediaspringboot.service.UserService;
 
@@ -22,6 +23,7 @@ public class ProfileController {
     @RequestMapping(method = {RequestMethod.GET})
     public String getProfile(Model model) {
         model.addAttribute("client", Client.getClient());
+        model.addAttribute("request",new FriendRequest());
         return "Profile";
     }
 
