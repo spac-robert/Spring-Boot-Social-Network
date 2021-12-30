@@ -22,7 +22,6 @@ public class RequestController {
     @RequestMapping(value = "/{id}", method = {RequestMethod.GET})
     public String sendFriendRequest(Model model, @PathVariable String id) {
         service.saveFriendship(Long.parseLong(id));
-
         return "redirect:/profile/" + id;
     }
 }
