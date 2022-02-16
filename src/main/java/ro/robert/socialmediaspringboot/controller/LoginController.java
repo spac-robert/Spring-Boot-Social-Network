@@ -39,7 +39,7 @@ public class LoginController {
         return "Login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST, params = "register")
+    @RequestMapping(value = "/login", method = RequestMethod.GET, params = "register")
     public String register(@ModelAttribute("account") User user, Model m) {
         return "redirect:/register";
     }

@@ -31,8 +31,6 @@ public class SignUpController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST, params = "signup")
     public String signUp(@ModelAttribute("account") User user, Model m) {
-        System.out.println(user);
-        //TODO find how to display error msg
         try {
             userValidator.validate(user);
         } catch (ValidationException e) {
@@ -47,7 +45,7 @@ public class SignUpController {
         return "redirect:/login";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST, params = "login")
+    @RequestMapping(value = "/register", method = RequestMethod.GET, params = "login")
     public String back(@ModelAttribute("account") User user, Model model) {
         return "redirect:/login";
     }

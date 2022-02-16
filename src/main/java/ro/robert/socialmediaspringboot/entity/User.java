@@ -3,6 +3,7 @@ package ro.robert.socialmediaspringboot.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import ro.robert.socialmediaspringboot.entity.enumeration.UserRole;
 
 import javax.persistence.*;
@@ -68,3 +69,4 @@ public class User {
         userById.friends.remove(this);
     }
 }
+

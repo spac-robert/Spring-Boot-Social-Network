@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<link th:href="@{/css/profile.css}" rel="stylesheet">
 <html>
 <head>
+    <link th:href="@{/static/css/profile.css}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         * {
@@ -86,11 +86,12 @@
     </style>
 </head>
 <body>
+
 <div class="topnav">
     <a class="active" th:href="@{/home}">Home</a>
-    <div class="row button">
-        <a th:href="@{/profile}">Profile</a>
-    </div>
+    <a th:href="@{/profile}">Profile</a>
+    <a th:href="@{/notifications}">Notification</a>
+    <a th:href="@{/friends}">Friends</a>
     <div class="search-container">
         <form th:action="@{/search}" method="get">
             <input type="text" placeholder="Search.." name="search">
@@ -102,7 +103,8 @@
         </form>
     </div>
 </div>
-<link href="css/profile.css" rel="stylesheet">
+</body>
+<link href="../static/css/profile.css" rel="stylesheet">
 <div class="container">
     <div class="main-body">
         <!-- /Breadcrumb -->
@@ -123,17 +125,6 @@
                                     <a class="btn btn-primary" th:href="@{/message/{id}(id=${client.id})}">Message
                                     </a>
                                 </td>
-<!--                                <td>-->
-<!--                                <td>-->
-<!--                                <div class="row button">-->
-<!--                                    <input type="submit" name="delete" value="Delete">-->
-<!--                                </div>-->
-<!--                                    <form action="#" th:action="@{/request/{id}(id=${client.id})}" method="post">-->
-<!--                                        <a class="btn btn-primary">Cancel request-->
-<!--                                        </a>-->
-<!--                                    </form>-->
-<!--                                </td>-->
-<!--                                </td>-->
                             </div>
                         </div>
                     </div>
@@ -162,8 +153,6 @@
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 </body>
 </html>

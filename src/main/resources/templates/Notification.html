@@ -88,8 +88,9 @@
 
 <div class="topnav">
     <a class="active" th:href="@{/home}">Home</a>
-    <a th:href="@{/profile}" id="profile">Profile</a>
+    <a th:href="@{/profile}">Profile</a>
     <a th:href="@{/notifications}">Notification</a>
+    <a th:href="@{/friends}">Friends</a>
     <div class="search-container">
         <form th:action="@{/search}" method="get">
             <input type="text" placeholder="Search.." name="search">
@@ -101,6 +102,7 @@
         </form>
     </div>
 </div>
+</body>
 <table>
     <tr th:each="notification : ${list_notifications}">
         <td th:text="${notification.getFriendRequest()}">
